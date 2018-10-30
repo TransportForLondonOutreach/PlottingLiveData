@@ -5,7 +5,7 @@ This exercise will show you how easy it is to get started building a website lik
 
 # Open your online code editor
 
-The first step is to open [this site](https://stackblitz.com/edit/typescript-v1mxv4?file=GetMap.ts). 
+The first step is to open [this site](https://stackblitz.com/edit/typescript-v1mxv4). 
 
 This is your code editor. On the left you type your code, and on the right is the live view that shows you what your code does.
 
@@ -153,7 +153,7 @@ Now we need to make that variable that will get the location of the stations fro
  = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoints");
 ```
 
-Your new code should look like the box on the right
+Your new code should look like the box below
 
 <Answer>
 
