@@ -5,7 +5,7 @@ This exercise will show you how easy it is to get started building a website lik
 
 # Open your online code editor
 
-The first step is to open [this site](https://stackblitz.com/edit/typescript-v1mxv4). 
+The first step is to open [this site](https://stackblitz.com/edit/typescript-v1mxv4?file=GetMap.ts). 
 
 This is your code editor. On the left you type your code, and on the right is the live view that shows you what your code does.
 
