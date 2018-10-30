@@ -1,7 +1,7 @@
 Citymapper is a popular app used by Londoners every day to help them travel from place to place on public transport.
 Transport for London provide Citymapper with all the information they need using TfL's publicly available Application Programming Interface (API). 
 
-This excercise will show you how easy it is to get started building a website like Citymapper that shows arrival information on a real map of London, on demand. We'll introduce you to the programming language **JavaScript**, the core language used to write websites and web apps. For this exercise we'll also be using CodePen - a free to use resource that allows you to write real HTML, Javascript and CSS in your browser and instantly see what your code does when you stop typing. CodePen is a great tool to use when learning how to create websites!
+This exercise will show you how easy it is to get started building a website like Citymapper that shows arrival information on a real map of London, on demand. We'll introduce you to the programming language **JavaScript**, the core language used to write websites and web apps. For this exercise we'll also be using StackBlitz - a free to use resource that allows you to write real HTML, Javascript and CSS in your browser and instantly see what your code does when you stop typing. StackBlitz is a great tool to use when learning how to create websites!
 
 # Open your online code editor
 
@@ -61,7 +61,7 @@ import Data from "./Data"
 
 export default async function GetMap() {
 
-var map = new BingMap();
+  var map = new BingMap();
 
   map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue");
 
@@ -78,7 +78,7 @@ Next we are going to add a pop up label to the Queen's House when you click on i
 If we want to annotate the point with a pop-up label, we need to add the following code to the next lines,:
 ```javascript
 function queensHousePopUp(){
-return "The Queen's House"
+  return "The Queen's House"
 }
 ```
 **after this** we need to add `queensHousePopUp` after the `colour` in the `map.AddPoint` brackets. See the comparison box below.
@@ -86,17 +86,17 @@ return "The Queen's House"
 ```javascript
 var map = new BingMap();
 
-  map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue");
+map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue");
 
-  function queensHousePopUp(){
+function queensHousePopUp(){
   return "The Queen's House"
   }
 ```vs
 var map = new BingMap();
 
-  map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue", queensHousePopUp);
+map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue", queensHousePopUp);
 
-  function queensHousePopUp(){
+function queensHousePopUp(){
   return "The Queen's House"
   }
 ```
@@ -107,7 +107,7 @@ Your right hand screen should now demonstrate something like this:
 # Stretch activity
 Using [this website](https://www.gps-coordinates.net/), enter your home address in the `address` bar, and click `get GPS coordinates`
 
-Use the Lat, Lon generated to plot your home on the map, replacing "The Queen's House". See if you can change the colour, label, and  to something you like! 
+Use the Lat, Lon generated to plot your home on the map, replacing "The Queen's House". See if you can change the colour and label to something you like! 
 
 # Plotting information and Live TfL Data
 Following on from plotting the Queen's house, we are now going to use Transport for London's live data to plot each station on the Jubilee line, and display the *live* tube times for each station on the line.
@@ -119,18 +119,18 @@ To view the stop points for the Jubilee line, you need to navigate to this URL:
 https://api.tfl.gov.uk/Line/jubilee/StopPoints
 
 
-As well as this link, you can view LIVE arrival times by navigating to this URL:
+As well as this link, you can view LIVE arrival times at this URL:
 https://api.tfl.gov.uk/Line/jubilee/Arrivals/
 
 
-However, when you navigate to either of these URLs, they display a lot of gobbledegook that isn't human readable. However, it is readable by code that you are about to write next.
+However, when you navigate to either of these URLs, they display a lot of gobbledegook (JSON - JavaScript Object Notation) that isn't human readable. However, it is readable by code that you are about to write next.
 
 ## Something to remember
 
-As you can see, the layout for accessing the station location data is:
+As you can see, the format for accessing the station location data is:
 `https://api.tfl.gov.uk`/`Line`/`ChosenLineHere`/`StopPoints`
 
-and the layour for accessing the station arrival time data is:
+and the format for accessing the station arrival time data is:
 
 `https://api.tfl.gov.uk`/`Line`/`ChosenLineHere`/`Arrivals`
 
@@ -141,22 +141,29 @@ To add the Jubilee stations to your map, we need to create a new variable called
 
 <Answer>
 
-* var jubileeLine
+```javascript
+var jubileeLine
+```
 
 </Answer>
 
 Now we need to make that variable that will get the location of the stations from TfL. We do this by adding the following on the same line as our new jubileeLine variable:
+
 ```javascript
  = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoints");
 ```
 
 Your new code should look like the box on the right
 
+<Answer>
+
 ```javascript
-var jubilee
+var jubileeLine
 ```vs
-var jubilee = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoints");
+var jubileeLine = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoints");
 ```
+
+</Answer>
 
 ## What does this code do?
 Here, we are making the new jubileeLine variable 'await' for a 'call' to the StopPoints URL.
@@ -173,7 +180,7 @@ export default async function GetMap() {
   map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue", queensHousePopUp);
 
   function queensHousePopUp(){
-return "The the Queen's House"
+    return "The the Queen's House"
 }
 var jubileeLine = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoints");
 ```
@@ -184,9 +191,9 @@ Next, we are going to display this data, by using a loop. Type the following cod
 ```javascript
 for (let station of jubileeLine) {
     
-    map.AddPoint(station.lat, station.lon, station.commonName, "Grey")
+  map.AddPoint(station.lat, station.lon, station.commonName, "Grey")
   
-    }
+}
 ```
 
 ## What does this code do?
@@ -212,17 +219,15 @@ export default async function GetMap() {
   map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue", queensHousePopUp);
 
   function queensHousePopUp(){
-return "This is the Queen's House"
-}
+    return "This is the Queen's House"
+  }
 
   var jubileeLine = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoints");
 
   for (let station of jubileeLine) {
     
     map.AddPoint(station.lat, station.lon, station.commonName, "Grey");
-
   }
-  
 }
 ```
 
@@ -254,11 +259,9 @@ async function ShowArrivals() {
 From line 22 we are going to type the following:
 ```javascript
 var data = await Data.CallArrivals("https://api.tfl.gov.uk/Line/jubilee/Arrivals/" + station.id)
-      var arrivals = Data.List(data);
-
-      var sortedArrivals = Data.Sort(arrivals);
-
-      return Data.Tablify(sortedArrivals);
+var arrivals = Data.List(data);
+var sortedArrivals = Data.Sort(arrivals);
+return Data.Tablify(sortedArrivals);
 ```
 
 ## What does this code do?
@@ -289,8 +292,8 @@ export default async function GetMap() {
   map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue", queensHousePopUp);
 
   function queensHousePopUp(){
-return "This is the Queen's House"
-}
+    return "This is the Queen's House"
+  }
 
   var jubileeLine = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoints");
 
@@ -302,11 +305,8 @@ return "This is the Queen's House"
       
       var data = await Data.CallArrivals("https://api.tfl.gov.uk/Line/jubilee/Arrivals/" + station.id)
       var arrivals = Data.List(data);
-
       var sortedArrivals = Data.Sort(arrivals);
-
       return Data.Tablify(sortedArrivals);
-      
     }
   }
 }
