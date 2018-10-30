@@ -18,13 +18,13 @@ This is what your screen should look like:
 The first thing we need to do is create a map to plot the station points on. To do this, we need to write our first line of code.
 
 On line 5, below 
-````js
+```javascript
 export default async functionGetMap(){
-````
+```
 type:
-````js
+```javascript
 var map = new BingMap();
-````
+```
 
 Then, the background of a map should appear on the right hand side of your screen. 
 
@@ -53,7 +53,9 @@ Again, don't forget the `;` at the end.
 ## Your code should look like this
 
 <Answer>
-```js
+
+```javascript
+
 import BingMap from "./BingMap"
 import Data from "./Data"
 
@@ -65,8 +67,8 @@ var map = new BingMap();
 
 }
 ```
-</Answer>
 
+</Answer>
 
 ## What next?
 Next we are going to add a pop up label to the Queen's House when you click on it. 
@@ -74,14 +76,14 @@ Next we are going to add a pop up label to the Queen's House when you click on i
 
 # Adding a pop-up label
 If we want to annotate the point with a pop-up label, we need to add the following code to the next lines,:
-````js
+```javascript
 function queensHousePopUp(){
 return "The Queen's House"
 }
-````
+```
 **after this** we need to add `queensHousePopUp` after the `colour` in the `map.AddPoint` brackets. See the comparison box below.
 
-```js
+```javascript
 var map = new BingMap();
 
   map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue");
@@ -144,13 +146,13 @@ To add the Jubilee stations to your map, we need to create a new variable called
 </Answer>
 
 Now we need to make that variable that will get the location of the stations from TfL. We do this by adding the following on the same line as our new jubileeLine variable:
-```js
+```javascript
  = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoints");
 ```
 
 Your new code should look like the box on the right
 
-```js
+```javascript
 var jubilee
 ```vs
 var jubilee = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoints");
@@ -160,7 +162,7 @@ var jubilee = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoint
 Here, we are making the new jubileeLine variable 'await' for a 'call' to the StopPoints URL.
 
 # Your code should now look like this:
-````js
+```javascript
 import BingMap from "./BingMap"
 import Data from "./Data"
 
@@ -174,18 +176,18 @@ export default async function GetMap() {
 return "The the Queen's House"
 }
 var jubileeLine = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoints");
-````
+```
 
 
 Next, we are going to display this data, by using a loop. Type the following code starting on line 15. 
 
-````js
+```javascript
 for (let station of jubileeLine) {
     
     map.AddPoint(station.lat, station.lon, station.commonName, "Grey")
   
     }
-````
+```
 
 ## What does this code do?
 This `for` loop is telling us that `for` every `station` location of the `jubileeLine` provided by TfL, we want to add a point to our map, using `map.AddPoint`. 
@@ -199,7 +201,7 @@ Before we continue, lets just have a quick code check to make sure you're on tra
 
 Your code should now be looking like this:
 
-````js
+```javascript
 import BingMap from "./BingMap"
 import Data from "./Data"
 
@@ -222,7 +224,7 @@ return "This is the Queen's House"
   }
   
 }
-````
+```
 
 If you have any questions or issues, ask one of the team now!
 
@@ -233,29 +235,31 @@ In this section we are now going to introduce live arrivals when you click on th
 To make sure our station points display the arrivals, we need to add `ShowArrivals` to the map.AddPoint properties on **line 18**. Give it a go... if you're stuck and have no idea, have a look by clicking reveal below.
 
 <Answer>
-````js
+
+```javascript
 map.AddPoint(station.lat, station.lon, station.commonName, "Grey");
 ```vs
 map.AddPoint(station.lat, station.lon, station.commonName, "Grey", ShowArrivals);
-````
+```
+
 </Answer>
 
 ## Create a Show Arrivals function
 Next we are going to create a function called ShowArrivals. We do this by typing the following code:
-````js
+```javascript
 async function ShowArrivals() {
-````
+```
 
 ## Write the code to make Show Arrivals appear on the map
 From line 22 we are going to type the following:
-````js
+```javascript
 var data = await Data.CallArrivals("https://api.tfl.gov.uk/Line/jubilee/Arrivals/" + station.id)
       var arrivals = Data.List(data);
 
       var sortedArrivals = Data.Sort(arrivals);
 
       return Data.Tablify(sortedArrivals);
-````
+```
 
 ## What does this code do?
 We are creating a `var`iable called `data` that `CallArrivals` from TfL from the Jubilee line for each `station.id`.
@@ -273,7 +277,8 @@ If you have any questions about this code, don't hesitate to ask a volunteer!
 Congratulations! We've now finished the exercise. Lets check your code to see the finished product!
 
 <Answer>
-````js
+
+```javascript
 import BingMap from "./BingMap"
 import Data from "./Data"
 
@@ -305,4 +310,6 @@ return "This is the Queen's House"
     }
   }
 }
-````
+```
+
+</Answer>
