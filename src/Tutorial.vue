@@ -1,8 +1,8 @@
 <template>
     <div>
         <nav class="navbar navbar-light fixed-top bg-light my-border-bottom">
-            <a class="navbar-brand d-none d-sm-flex">Coding With Tom</a>
-            <a class="navbar-brand d-flex d-sm-none">CWT</a>
+            <a class="navbar-brand d-none d-sm-flex">TFL</a>
+            <a class="navbar-brand d-flex d-sm-none">TFL</a>
             <ul class="nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link d-flex">
@@ -118,9 +118,9 @@ export default {
     updateTitle() {
         let i = this.currentObjectiveIndex;
         if (i === -1) {
-            document.title = "Coding With Tom";
+            document.title = "Coding With TFL";
         } else {
-            document.title = `Coding With Tom - ${this.jsonObject.objectives[i].title}`;
+            document.title = `Coding With TFL - ${this.jsonObject.objectives[i].title}`;
         }
     },
     onStorage() {
