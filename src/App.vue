@@ -50,7 +50,7 @@ export default {
     return {
       state: "INIT",
       markdownUrl: null,
-      defaultUrl: "https://raw.githubusercontent.com/Glitch0011/CodingWithTom/master/tutorials/Tutorial_UploadingData.md",
+      defaultUrl: "https://raw.githubusercontent.com/TransportForLondonOutreach/PlottingLiveData/master/tutorials/Tutorial_DownloadData.md",
       storedMarkdownUrl: null,
       markdown: null
     };
