@@ -44,7 +44,7 @@
     "vue-router": "^3.0.1",
     "webpack": "^4.19.0"
   },
-  "name": "CodingWithTom",
+  "name": "PlottingLiveData",
   "description": "",
   "version": "1.0.0",
   "main": "index.js",
