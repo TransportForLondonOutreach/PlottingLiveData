@@ -58,16 +58,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Glitch0011/CodingWithTom.git"
+    "url": "https://github.com/TransportForLondonOutreach/PlottingLiveData.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Glitch0011/CodingWithTom/issues"
+    "url": "https://github.com/TransportForLondonOutreach/PlottingLiveData/issues"
   },
   "alias": {
     "vue$": "vue/dist/vue.js"
   },
-  "homepage": "https://github.com/Glitch0011/CodingWithTom#readme"
+  "homepage": "https://github.com/TransportForLondonOutreach/PlottingLiveData#readme"
 }
