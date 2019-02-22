@@ -43,7 +43,7 @@ To do this, below
 
 type this code on line 8:
 
-`map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue");`
+`map.AddPoint(51.503,-0.11398099999996703, "Waterloo Station", "Blue");`
 
 ## What does this code do?
 `map.AddPoint` is adding a point to the map. In the brackets, we are giving it the **latitude**, **longitude**, **label**, and **colour** of the point.
@@ -63,7 +63,7 @@ export default async function GetMap() {
 
   var map = new BingMap();
 
-  map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue");
+  map.AddPoint(51.503,-0.11398099999996703, "Waterloo Station", "Blue");
 
 }
 ```
@@ -71,33 +71,33 @@ export default async function GetMap() {
 </Answer>
 
 ## What next?
-Next we are going to add a pop up label to the Queen's House when you click on it. 
+Next we are going to add a pop up label to Waterloo Station when you click on it. 
 
 
 # Adding a pop-up label
 If we want to annotate the point with a pop-up label, we need to add the following code to the next lines,:
 ```javascript
-function queensHousePopUp(){
-  return "The Queen's House"
+function waterlooStationPopUp(){
+  return "London's busiest station!"
 }
 ```
-**after this** we need to add `queensHousePopUp` after the `colour` in the `map.AddPoint` brackets. See the comparison box below.
+**after this** we need to add `waterlooStationPopUp` after the `colour` in the `map.AddPoint` brackets. See the comparison box below.
 
 ```javascript
 var map = new BingMap();
 
-map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue");
+map.AddPoint(51.503,-0.11398099999996703, "Waterloo Station", "Blue");
 
-function queensHousePopUp(){
-  return "The Queen's House"
+function waterlooStationPopUp(){
+  return "London's busiest station!"
   }
 ```vs
 var map = new BingMap();
 
-map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue", queensHousePopUp);
+map.AddPoint(51.503,-0.11398099999996703, "Waterloo Station", "Blue", waterlooStationPopUp );
 
-function queensHousePopUp(){
-  return "The Queen's House"
+function waterlooStationPopUp(){
+  return "London's busiest station!"
   }
 ```
 
@@ -107,10 +107,10 @@ Your right hand screen should now demonstrate something like this:
 # Stretch activity
 Using [this website](https://www.gps-coordinates.net/), enter your home address in the `address` bar, and click `get GPS coordinates`
 
-Use the Lat, Lon generated to plot your home on the map, replacing "The Queen's House". See if you can change the colour and label to something you like! 
+Use the Lat, Lon generated to plot your home on the map, replacing "Waterloo Station". See if you can change the colour and label to something you like! 
 
 # Plotting information and Live TfL Data
-Following on from plotting the Queen's house, we are now going to use Transport for London's live data to plot each station on the Jubilee line, and display the *live* tube times for each station on the line.
+Following on from plotting the Waterloo Station, we are now going to use Transport for London's live data to plot each station on the Jubilee line, and display the *live* tube times for each station on the line.
 
 ## Accessing TfL live data
 Transport for London makes live tube data freely accessible to anyone who wants to build an app with the data. 
@@ -137,7 +137,7 @@ and the format for accessing the station arrival time data is:
 **Remember this if you get to the stretch goal later on!**
 
 # Plotting the Jubilee Line on your map
-To add the Jubilee stations to your map, we need to create a new variable called `jubileeLine`, similar to what we did earlier when we created a new variable called `bingMap`. Create a variable on line 13 called `jubileeLine`. If you are having trouble, click reveal to see the answer below.
+To add the Jubilee stations to your map, we need to create a new variable called `jubileeLine`, similar to what we did earlier when we created a new variable called `bingMap`. Create a variable on line 13 called `jubileeLine`. If you are having trouble, click reveal to see the answer below.(It is okay if your answer has a squiggly line underneath it,this will be solved in the next step.)
 
 <Answer>
 
@@ -176,11 +176,12 @@ import Data from "./Data"
 export default async function GetMap() {
 
   var map = new BingMap();
+  
+  map.AddPoint(51.503,-0.11398099999996703, "Waterloo Station", "Blue", waterlooStationPopUp );
 
-  map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue", queensHousePopUp);
+function waterlooStationPopUp(){
+  return "London's busiest station!"
 
-  function queensHousePopUp(){
-    return "The the Queen's House"
 }
 var jubileeLine = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoints");
 ```
@@ -216,10 +217,10 @@ export default async function GetMap() {
 
   var map = new BingMap();
 
-  map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue", queensHousePopUp);
+  map.AddPoint(51.503,-0.11398099999996703, "Waterloo Station", "Blue", waterlooStationPopUp );
 
-  function queensHousePopUp(){
-    return "This is the Queen's House"
+  function waterlooStationPopUp(){
+    return "London's busiest station!"
   }
 
   var jubileeLine = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoints");
@@ -250,16 +251,16 @@ map.AddPoint(station.lat, station.lon, station.commonName, "Grey", ShowArrivals)
 </Answer>
 
 ## Create a Show Arrivals function
-Next we are going to create a function called ShowArrivals. We do this by typing the following code:
+Next we are going to create a function called ShowArrivals. It is okay if the function name has a squiggly line underneath it,this will be solved in the next step. We do this by typing the following code:
 ```javascript
 async function ShowArrivals() {
 ```
 
 ## Write the code to make Show Arrivals appear on the map
-From line 22 we are going to type the following:
+From line 22 we are going to type the following (*scroll althe way to the right*):
 ```javascript
 var data = await Data.CallArrivals("https://api.tfl.gov.uk/Line/jubilee/Arrivals/" + station.id)
-var arrivals = Data.List(data);
+var arrivals = Data.ArrivalList(data);
 var sortedArrivals = Data.Sort(arrivals);
 return Data.Tablify(sortedArrivals);
 ```
@@ -267,7 +268,7 @@ return Data.Tablify(sortedArrivals);
 ## What does this code do?
 We are creating a `var`iable called `data` that `CallArrivals` from TfL from the Jubilee line for each `station.id`.
 
-On the next line we make the `var`iable `arrivals` into 
+On the next line we turn the contents of the `data` into a list and store it in a new `var`iable called `arrivals`.
 
 Next, we make a `var`iable called `sortedArrivals` to arrange the `arrivals` variable from lowest to highest using `Data.Sort`
 
@@ -288,11 +289,10 @@ import Data from "./Data"
 export default async function GetMap() {
 
   var map = new BingMap();
+  map.AddPoint(51.503,-0.11398099999996703, "Waterloo Station", "Blue", waterlooStationPopUp );
 
-  map.AddPoint(51.501476, -0.140634, "The Queen's House", "Blue", queensHousePopUp);
-
-  function queensHousePopUp(){
-    return "This is the Queen's House"
+  function waterlooStationPopUp(){
+    return "London's busiest station!"
   }
 
   var jubileeLine = await Data.CallLine("https://api.tfl.gov.uk/Line/jubilee/StopPoints");
