@@ -102,7 +102,7 @@ function waterlooStationPopUp(){
 ```
 
 Your right hand screen should now demonstrate something like this:
-![Input](https://raw.githubusercontent.com/TransportForLondonOutreach/PlottingLiveData/master/pics/queenshouse.png)
+![Input](https://raw.githubusercontent.com/TransportForLondonOutreach/PlottingLiveData/blob/master/pics/Waterloo.png)
 
 # Stretch activity
 Using [this website](https://www.gps-coordinates.net/), enter your home address in the `address` bar, and click `get GPS coordinates`
