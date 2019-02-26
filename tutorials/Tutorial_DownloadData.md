@@ -137,7 +137,8 @@ and the format for accessing the station arrival time data is:
 **Remember this if you get to the stretch goal later on!**
 
 # Plotting the Jubilee Line on your map
-To add the Jubilee stations to your map, we need to create a new variable called `jubileeLine`, similar to what we did earlier when we created a new variable called `bingMap`. Create a variable on line 13 called `jubileeLine`. If you are having trouble, click reveal to see the answer below.(It is okay if your answer has a squiggly line underneath it,this will be solved in the next step.)
+To add the Jubilee stations to your map, we need to create a new variable called `jubileeLine`, similar to what we did earlier when we created a new variable called `bingMap`. Create a variable on line 13 called `jubileeLine`. If you are having trouble, click reveal to see the answer below.
+(It is okay if your answer has a squiggly line underneath it, this will be solved in the next step.)
 
 <Answer>
 
@@ -251,13 +252,13 @@ map.AddPoint(station.lat, station.lon, station.commonName, "Grey", ShowArrivals)
 </Answer>
 
 ## Create a Show Arrivals function
-Next we are going to create a function called ShowArrivals. It is okay if the function name has a squiggly line underneath it,this will be solved in the next step. We do this by typing the following code:
+Next we are going to create a function called ShowArrivals. It is okay if the function name has a squiggly line underneath it, this will be solved in the next step. We do this by typing the following code:
 ```javascript
 async function ShowArrivals() {
 ```
 
 ## Write the code to make Show Arrivals appear on the map
-From line 22 we are going to type the following (*scroll althe way to the right*):
+From line 22 we are going to type the following (*scroll all the way to the right*):
 ```javascript
 var data = await Data.CallArrivals("https://api.tfl.gov.uk/Line/jubilee/Arrivals/" + station.id)
 var arrivals = Data.ArrivalList(data);
