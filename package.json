@@ -31,6 +31,7 @@
     "match-all": "^1.2.4",
     "monaco-editor": "^0.14.3",
     "monaco-editor-webpack-plugin": "^1.5.3",
+    "natives": "^1.1.6",
     "popper.js": "^1.14.3",
     "striptags": "^3.1.1",
     "style-loader": "^0.23.0",
@@ -52,7 +53,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "parcel ./index.html",
     "build": "cross-env NODE_ENV=production npm run parcel && npm run gulp",
-    "parcel": "parcel build index.html",
+    "parcel": "parcel build index.html --public-url .",
     "gulp": "gulp",
     "deploy": "gh-pages -d dist",
     "publish": "gh-pages -d dist"
