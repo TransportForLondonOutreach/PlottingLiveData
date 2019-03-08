@@ -110,7 +110,7 @@ Your right hand screen should now demonstrate something like this:
 # Stretch activity
 Using [this website](https://www.gps-coordinates.net/), enter your home address in the `address` bar, and click `get GPS coordinates`
 
-Use the Lat, Lon generated to plot your home on the map, replacing "Waterloo Station". See if you can change the colour and label to something you like! 
+Use the Lat, Lon generated to plot your school on the map, replacing "Waterloo Station". See if you can change the colour and label to something you like! 
 
 # Plotting information and Live TfL Data
 Following on from plotting the Waterloo Station, we are now going to use Transport for London's live data to plot each station on the Jubilee line, and display the *live* tube times for each station on the line.
