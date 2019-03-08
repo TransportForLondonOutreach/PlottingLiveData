@@ -40,12 +40,12 @@ Now that we have the map, we can add a point.
 
 To do this, below 
 ```javascript
-var map = new BingMap();`
+var map = new BingMap();
 ```
 
 type this code on line 8:
 ```javascript
-map.AddPoint(51.503,-0.11398099999996703, "Waterloo Station", "Blue");`
+map.AddPoint(51.503,-0.11398099999996703, "Waterloo Station", "Blue");
 ```
 
 ## What does this code do?
