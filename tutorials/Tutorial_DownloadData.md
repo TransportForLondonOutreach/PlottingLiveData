@@ -39,11 +39,14 @@ Then, the background of a map should appear on the right hand side of your scree
 Now that we have the map, we can add a point.
 
 To do this, below 
-`var map = new BingMap();`
+```javascript
+var map = new BingMap();`
+```
 
 type this code on line 8:
-
-`map.AddPoint(51.503,-0.11398099999996703, "Waterloo Station", "Blue");`
+```javascript
+map.AddPoint(51.503,-0.11398099999996703, "Waterloo Station", "Blue");`
+```
 
 ## What does this code do?
 `map.AddPoint` is adding a point to the map. In the brackets, we are giving it the **latitude**, **longitude**, **label**, and **colour** of the point.
@@ -137,7 +140,7 @@ and the format for accessing the station arrival time data is:
 **Remember this if you get to the stretch goal later on!**
 
 # Plotting the Jubilee Line on your map
-To add the Jubilee stations to your map, we need to create a new variable called `jubileeLine`, similar to what we did earlier when we created a new variable called `bingMap`. Create a variable on line 13 called `jubileeLine`. If you are having trouble, click reveal to see the answer below.
+To add the Jubilee stations to your map, we need to create a new variable called `jubileeLine`, similar to what we did earlier when we created a new variable called `map`. Create a variable on line 13 called `jubileeLine`. If you are having trouble, click reveal to see the answer below.
 (It is okay if your answer has a squiggly line underneath it, this will be solved in the next step.)
 
 <Answer>
@@ -261,7 +264,7 @@ async function ShowArrivals() {
 From line 22 we are going to type the following (*scroll all the way to the right*):
 ```javascript
 var data = await Data.CallArrivals("https://api.tfl.gov.uk/Line/jubilee/Arrivals/" + station.id)
-var arrivals = Data.ArrivalList(data);
+var arrivals = Data.ArrivalsList(data);
 var sortedArrivals = Data.Sort(arrivals);
 return Data.Tablify(sortedArrivals);
 ```
