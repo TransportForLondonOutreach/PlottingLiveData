@@ -105,6 +105,10 @@ export default {
 			type: String,
 			default: "content"
 		},
+		lineNumbers: {
+			type: String,
+			default: "off"
+		},
 		readOnly: {
 			type: Boolean,
 			default: true
