@@ -172,6 +172,7 @@ export default {
 			let options = {
 				language: this.language,
 				theme: 'vs-dark',
+				lineNumbers: this.lineNumbers,
 				readOnly: this.readOnly,
 				automaticLayout: true,
 				wordWrap: this.wordWrap ? "on" : "off",
