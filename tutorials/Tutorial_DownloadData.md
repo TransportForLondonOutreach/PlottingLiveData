@@ -305,7 +305,7 @@ export default async function GetMap() {
     async function ShowArrivals() {
       
       var data = await Data.CallArrivals("https://api.tfl.gov.uk/Line/jubilee/Arrivals/" + station.id)
-      var arrivals = Data.List(data);
+      var arrivals = Data.ArrivalsList(data);
       var sortedArrivals = Data.Sort(arrivals);
       return Data.Tablify(sortedArrivals);
     }
